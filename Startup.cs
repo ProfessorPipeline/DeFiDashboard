@@ -26,6 +26,18 @@ namespace CryptoDashboard
             // Add the database context
             services.AddDbContext<CryptoPortfolioContext>(options =>
                 options.UseSqlServer(Configuration.GetConnectionString("DefaultConnection")));
+
+            // Add CORS policy
+            services.AddCors(options =>
+            {
+                options.AddPolicy("AllowReactApp",
+                    builder =>
+                    {
+                        builder.WithOrigins("http://localhost:3000")
+                               .AllowAnyHeader()
+                               .AllowAnyMethod();
+                    });
+            });
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
@@ -45,6 +57,9 @@ namespace CryptoDashboard
             app.UseStaticFiles();
 
             app.UseRouting();
+
+            // Use the CORS policy
+            app.UseCors("AllowReactApp");
 
             app.UseAuthorization();
 

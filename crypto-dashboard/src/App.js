@@ -24,9 +24,16 @@ function App() {
         };
 
         const fetchCryptoAssets = async () => {
-            const response = await fetch('http://localhost:5000/api/cryptoassets');
-            const data = await response.json();
-            setCryptoAssets(data);
+            try {
+                const response = await fetch('http://localhost:5000/api/cryptoassets');
+                if (!response.ok) {
+                    throw new Error('Network response was not ok');
+                }
+                const data = await response.json();
+                setCryptoAssets(data);
+            } catch (error) {
+                console.error('Failed to fetch:', error);
+            }
         };
 
         loadWeb3();
