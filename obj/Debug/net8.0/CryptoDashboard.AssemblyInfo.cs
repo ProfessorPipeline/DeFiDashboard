@@ -13,7 +13,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("CryptoDashboard")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+81a213acf136279a72ffeaeef190c784af11d678")]
 [assembly: System.Reflection.AssemblyProductAttribute("CryptoDashboard")]
 [assembly: System.Reflection.AssemblyTitleAttribute("CryptoDashboard")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]
