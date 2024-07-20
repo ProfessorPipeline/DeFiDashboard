@@ -3,6 +3,7 @@ import Web3 from 'web3';
 
 function App() {
     const [account, setAccount] = useState('');
+    const [cryptoAssets, setCryptoAssets] = useState([]);
 
     useEffect(() => {
         const loadWeb3 = async () => {
@@ -22,14 +23,26 @@ function App() {
             setAccount(accounts[0]);
         };
 
+        const fetchCryptoAssets = async () => {
+            const response = await fetch('http://localhost:5000/api/cryptoassets');
+            const data = await response.json();
+            setCryptoAssets(data);
+        };
+
         loadWeb3();
         loadBlockchainData();
+        fetchCryptoAssets();
     }, []);
 
     return (
         <div>
             <h1>Crypto Dashboard</h1>
             <p>Your account: {account}</p>
+            <ul>
+                {cryptoAssets.map(asset => (
+                    <li key={asset.id}>{asset.name}: {asset.amount}</li>
+                ))}
+            </ul>
         </div>
     );
 }
